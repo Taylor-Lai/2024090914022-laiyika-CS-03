@@ -88,7 +88,12 @@
 
       
 ## 内存模型的运用
-### 浅谈Cache
+![image](https://github.com/Taylor-Lai/2024090914022-laiyika-CS-03/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-23%20234326.png)
+首先，我想先通过各个类型的含义来推出其在内存中的位置。
+我在原代码的基础上打印了各个变量的地址。
+根据图片可以很清楚的看到constvalue单独位于一个分区，constsring,globalvar,staticvar.位于同一分区，且。因为constvalue并不是在函数内部定义的，且用const表明它不可修改。所以他在常量区。
+而locavar,ptr,localvarmain,位于同一分区
+## 浅谈Cache
 1.冯诺伊曼结构有以下几点
 
       1，冯诺伊曼结构采用了二进制的形式表示数据和指令。因为计算机只有高电压和低电压两种信号之分。
