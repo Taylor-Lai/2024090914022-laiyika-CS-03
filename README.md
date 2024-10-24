@@ -88,10 +88,36 @@
 
       
 ## 内存模型的运用
-![image](https://github.com/Taylor-Lai/2024090914022-laiyika-CS-03/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-23%20234326.png)
+
 首先，我想先通过各个类型的含义来推出其在内存中的位置。
-我在原代码的基础上打印了各个变量的地址。
-根据图片可以很清楚的看到constvalue单独位于一个分区，constsring,globalvar,staticvar.位于同一分区，且。因为constvalue并不是在函数内部定义的，且用const表明它不可修改。所以他在常量区。
+
+      constValue:常量存储区
+	    因为他的值在编译时就已确定好了，并在整个程序内保持不变。假设它不在常量存储区，那么它可能会被意外修改，从而破坏了程序的预期行为。
+     
+      constString：
+	    这里我想说明一下const，因为const是在*之前，所以不可被更改的是*constsring而非其本身
+     
+      globalVar:全局数据区
+      因为它在程序的整个生命周期内都有效，并且在程序开始执行之前就已经被分配了存储空间。
+      
+      staticVar：全局数据区
+      在这里虽然他是在main函数内部被定义，看似应该是在栈区，但由于static关键字，它的存在周期贯穿整个程序。
+      
+      localVar:栈区
+      localVar是function函数内部的一个局部变量，它在函数被调用时创建，在函数返回时销毁。
+      
+      localVarMain:栈区
+      与localvar类似 只不过它在主函数内。
+      
+      ptr:栈区
+      ptr是一个指向整数的指针变量，它本身作为局部变量存在
+
+我也另外给出了一种方法。我分别对每个变量取了地址。结果如图所示：
+![image](https://github.com/Taylor-Lai/2024090914022-laiyika-CS-03/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-23%20234326.png)
+
+
+
+根据图片可以很清楚的看到constvalue单独位于一个分区，因为constvalue并不是在函数内部定义的，且用const表明它不可修改，所以显然他在常量区。constsring,globalvar,staticvar.位于同一分区，且
 而locavar,ptr,localvarmain,位于同一分区
 ## 浅谈Cache
 1.冯诺伊曼结构有以下几点
