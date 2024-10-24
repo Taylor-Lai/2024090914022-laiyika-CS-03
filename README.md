@@ -115,10 +115,8 @@
 我也另外给出了一种方法。我分别对每个变量取了地址。结果如图所示：
 ![image](https://github.com/Taylor-Lai/2024090914022-laiyika-CS-03/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-10-23%20234326.png)
 
+根据图片可以很清楚的看到constvalue单独位于一个分区，constsring,globalvar,staticvar.位于同一分区，而locavar,ptr,localvarmain,位于同一分区，这恰好佐证了先前的论断。
 
-
-根据图片可以很清楚的看到constvalue单独位于一个分区，因为constvalue并不是在函数内部定义的，且用const表明它不可修改，所以显然他在常量区。constsring,globalvar,staticvar.位于同一分区，且
-而locavar,ptr,localvarmain,位于同一分区
 ## 浅谈Cache
 1.冯诺伊曼结构有以下几点
 
